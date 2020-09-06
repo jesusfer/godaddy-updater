@@ -1,0 +1,48 @@
+{
+  "name": "godaddy-updater",
+  "version": "1.0.0",
+  "description": "Service to update GoDaddy DNS entries.",
+  "main": "index.js",
+  "scripts": {
+    "pre-commit-msg": "echo '\n==== Pre-commit checks... ==== \n'&& exit 0",
+    "test": "ava",
+    "watch": "ts-node-dev --inspect=0.0.0.0:1234 -r dotenv-safe/config src/index.ts",
+    "lint": "tslint -p tsconfig.json -c tslint.json",
+    "build": "tsc",
+    "start": "ts-node src/",
+    "start:dist": "node dist/"
+  },
+  "pre-commit": [
+    "pre-commit-msg",
+    "lint",
+    "build"
+  ],
+  "keywords": [],
+  "author": "Jesus Fernandez <jesus@nublar.net>",
+  "license": "MIT",
+  "ava": {
+    "compileEnhancements": false,
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ]
+  },
+  "devDependencies": {
+    "@types/debug": "^4.1.5",
+    "@types/node": "^13.7.4",
+    "@types/node-schedule": "^1.3.0",
+    "ava": "^3.3.0",
+    "dotenv-safe": "^8.2.0",
+    "pre-commit": "^1.2.2",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "tslint": "^6.0.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "typescript": "^3.8.2"
+  },
+  "dependencies": {
+    "debug": "^4.1.1",
+    "node-schedule": "^1.3.2"
+  }
+}
