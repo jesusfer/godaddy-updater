@@ -20,7 +20,8 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
       - name: Build and push Docker images
         uses: docker/build-push-action@v1
@@ -29,5 +30,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           registry: registry.nublar.net
           repository: godaddy-updater
+          # Tag the image with the tag name
           tag_with_ref: true
+          # Only push the image if the commit included a tag
           push: ${{ startsWith(github.ref, 'refs/tags/') }}
