@@ -28,6 +28,6 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           registry: registry.nublar.net
-          repository: registry.nublar.net/godaddy-updater
+          repository: godaddy-updater
           tag_with_ref: true
           push: ${{ startsWith(github.ref, 'refs/tags/') }}
